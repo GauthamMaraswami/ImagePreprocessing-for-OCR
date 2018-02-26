@@ -1,0 +1,3 @@
+Run program using following command
+
+python ocr.py --image "IMAGE PATH" --preproces blur/thresh
