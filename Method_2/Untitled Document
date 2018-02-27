@@ -1,3 +1,6 @@
 Run program using following command
 
 python ocr.py --image "IMAGE PATH" --preproces blur/thresh
+
+For Kannada Translation
+python ocrkan.py --image "IMAGE PATH" --preproces blur/thresh
