@@ -43,7 +43,7 @@ trans =  Translator()
 word_list = trans.translate(s,dest='mr')
 for word in word_list :
 	text=word.text
-	marthi_text = text.encode("utf-8");
+	marathi_text = text.encode("utf-8");
 	print(marthi_text)
 	obj_file = open("out.text","w")
 	obj_file.write(marthi_text)
