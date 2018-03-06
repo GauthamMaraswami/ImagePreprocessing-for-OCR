@@ -150,11 +150,30 @@ orig_img = cv2.imread(input_file)
 # Add a border to the image for processing sake
 img = cv2.copyMakeBorder(orig_img, 50, 50, 50, 50, cv2.BORDER_CONSTANT)
 
+
+img= cv2.threshold(img, 100, 255,
+		cv2.THRESH_BINARY)[1]
+
 # Calculate the width and height of the image
 img_y = len(img)
 img_x = len(img[0])
 
+#Converting image to LAB Color model 
+lab= cv2.cvtColor(img, cv2.COLOR_BGR2LAB)
 
+#Splitting the LAB image to different channels
+l, a, b = cv2.split(lab)
+
+#Applying CLAHE to L-channel
+clahe = cv2.createCLAHE(clipLimit=3.0, tileGridSize=(8,8))
+cl = clahe.apply(l)
+
+#Merge the CLAHE enhanced L-channel with the a and b channel
+limg = cv2.merge((cl,a,b))
+cv2.imshow('limg', limg)
+
+#Converting image from LAB Color model to RGB model
+img = cv2.cvtColor(limg, cv2.COLOR_LAB2BGR)
 
 #Split out each channel
 blue, green, red = cv2.split(img)
