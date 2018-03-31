@@ -151,8 +151,8 @@ orig_img = cv2.imread(input_file)
 img = cv2.copyMakeBorder(orig_img, 50, 50, 50, 50, cv2.BORDER_CONSTANT)
 
 
-#img= cv2.threshold(img, 100, 255,
-	#	cv2.THRESH_BINARY)[1]
+img= cv2.threshold(img, 100, 255,
+			cv2.THRESH_BINARY)[1]
 
 # Calculate the width and height of the image
 img_y = len(img)
@@ -264,4 +264,5 @@ for index_, (contour_, box) in enumerate(keepers):
 # blur a bit to improve ocr accuracy
 new_image = cv2.blur(new_image, (2, 2))
 cv2.imwrite(output_file, new_image)
+
 
